@@ -54,22 +54,31 @@ let mixer = mixitup(container, {
             }
 
             // if no filters are set
-            if (mixer.state.totalHide == 0 && mixer.filterGroups[0].activeSelectors.length == 0) {
-                $("#filter-results").hide();
-            } else {
-                $("#filter-results").show();
-            }
-
+            toggleResultsHeader(mixer);
+            
             // if no results are found
             toggleEmptyState(mixer);
         }
     }
 });
 
+// initialize with results header hidden
+toggleResultsHeader(mixer)
 
 
+
+// toggles results header 
+// when we are not filtering
+function toggleResultsHeader(mixer) {
+    if (mixer.state.totalHide == 0 && mixer.filterGroups[0].activeSelectors.length == 0) {
+        $("#filter-results").hide();
+    } else {
+        $("#filter-results").show();
+    }
+}
 
 // toggles empty state component
+// when no results are found
 function toggleEmptyState(mixer) {
     if (mixer.state.hasFailed) {
         $("#offers-empty-state").show()
@@ -79,18 +88,6 @@ function toggleEmptyState(mixer) {
 }
 
 
-
-
-
-
-
-
 console.log(mixer)
 
 
-// no filters are set yet, so hide the results header
-if (mixer.state.totalHide == 0 && mixer.filterGroups[1].activeSelectors.length == 0) {
-    $("#filter-results").hide();
-} else {
-    $("#filter-results").show();
-}
