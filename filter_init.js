@@ -53,9 +53,9 @@ toggleResultsHeader(mixer)
 
 // updates category dropdown toggle
 // sets the count and adds/removes active state
-function updateUI(categories, toggles) {
+function updateCategoryUI(categories) {
     // if there are no active categories
-    if (categories == 0) {
+    if (categories == 0 && activeToggles != ".featured") {
         if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
             // set the new state
             $("#categories-toggle").toggleClass("dropdown__toggle--active");
@@ -99,5 +99,3 @@ function toggleEmptyState(mixer) {
 
 
 console.log(mixer)
-
-
