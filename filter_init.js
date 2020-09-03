@@ -25,33 +25,15 @@ let mixer = mixitup(container, {
             originalEvent.preventDefault();
         },
         onMixEnd: function(state) {
-            console.log(state)
             // update total # of results in header
             $("#filter-matches").text(mixer.state.totalMatching);
-            const activeToggles = mixer.filterGroups[1].activeToggles
+            
+            let activeToggles = mixer.filterGroups[1].activeToggles
             let activeCategories = activeToggles.length;
-            console.log(activeToggles)
 
-            // if there's active categories
-            if (activeCategories > 0) {
-                if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
-                    // set the new state
-                    $("#categories-count").text("Categories: " + activeCategories);
-                } else {
-                    // set the active class and state
-                    $("#categories-toggle").addClass("dropdown__toggle--active");
-                    $("#categories-count").text("Categories: " + activeCategories);
-                }
-            }
-
-            // if there's no active categories
-            if (activeCategories == 0) {
-                if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
-                    // set the new state
-                    $("#categories-toggle").toggleClass("dropdown__toggle--active");
-                    $("#categories-count").text("Categories");
-                }
-            }
+            
+            // update categories UI
+            updateCategoryUI(activeCategories);            
 
             // if no filters are set
             toggleResultsHeader(mixer);
@@ -65,6 +47,32 @@ let mixer = mixitup(container, {
 // initialize with results header hidden
 toggleResultsHeader(mixer)
 
+
+
+// updates category dropdown toggle
+// sets the count and adds/removes active state
+function updateCategoryUI(categories) {
+    // if there are no active categories
+    if (categories == 0) {
+        if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
+            // set the new state
+            $("#categories-toggle").toggleClass("dropdown__toggle--active");
+            $("#categories-count").text("Categories");
+        }
+    }
+    
+    // if there are active categories
+    if (categories > 0) {
+        if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
+            // set the new state
+            $("#categories-count").text("Categories: " + categories);
+        } else {
+            // set the active class and state
+            $("#categories-toggle").addClass("dropdown__toggle--active");
+            $("#categories-count").text("Categories: " + categories);
+        }
+    }
+}
 
 
 // toggles results header 
