@@ -2,10 +2,10 @@ let container = $('#offers-list');
 
 let mixer = mixitup(container, {
     multifilter: {
-        enable.: true
+        enable: true
     },
     load: {
-        sort.: 'popularity:desc'
+        sort: 'popularity:desc'
     },
     controls: {
         enable: true,
@@ -15,10 +15,10 @@ let mixer = mixitup(container, {
         duration: 0
     },
     selectors: {
-        target.: '.offers-list-item'
+        target: '.offers-list-item'
     },
     debug: {
-        enable.: true
+        enable: true
     },
     callbacks: {
         onMixClick: function(state, originalEvent) {
