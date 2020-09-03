@@ -25,6 +25,7 @@ let mixer = mixitup(container, {
             originalEvent.preventDefault();
         },
         onMixEnd: function(state) {
+            console.log(state)
             // update total # of results in header
             $("#filter-matches").text(mixer.state.totalMatching);
             const activeToggles = mixer.filterGroups[1].activeToggles
