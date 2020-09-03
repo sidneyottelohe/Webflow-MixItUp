@@ -61,14 +61,29 @@ let mixer = mixitup(container, {
             }
 
             // if no results are found
-            if (mixer.state.hasFailed) {
-                $("#offers-empty-state").show()
-            } else {
-                $("#offers-empty-state").hide()
-            }
+            toggleEmptyState(mixer);
         }
     }
 });
+
+
+
+
+// toggles empty state component
+function toggleEmptyState(mixer) {
+    if (mixer.state.hasFailed) {
+        $("#offers-empty-state").show()
+    } else {
+        $("#offers-empty-state").hide()
+    }
+}
+
+
+
+
+
+
+
 
 console.log(mixer)
 
