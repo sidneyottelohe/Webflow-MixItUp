@@ -47,7 +47,7 @@ let mixer = mixitup(container, {
 });
 
 // initialize with results header hidden
-toggleResultsHeader(mixer)
+toggleResultsHeader(mixer);
 
 
 
