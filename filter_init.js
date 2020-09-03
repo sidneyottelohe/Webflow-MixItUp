@@ -29,8 +29,10 @@ let mixer = mixitup(container, {
             $("#filter-matches").text(mixer.state.totalMatching);
             
             let activeCategories = mixer.filterGroups[0].activeToggles;
+            console.log("active categories:" + activeCategories);
+            
             let activeToggles    = mixer.filterGroups[1].activeToggles;
-           
+            console.log("active toggles:" + activeToggles);
             
             // update categories UI
             updateCategoryUI(activeCategories, activeToggles);            
