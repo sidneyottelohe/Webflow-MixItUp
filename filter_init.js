@@ -28,12 +28,12 @@ let mixer = mixitup(container, {
             // update total # of results in header
             $("#filter-matches").text(mixer.state.totalMatching);
             
-            let activeToggles = mixer.filterGroups[1].activeToggles
-            let activeCategories = activeToggles.length;
-
+            let activeCategories = mixer.filterGroups[0].activeToggles;
+            let activeToggles    = mixer.filterGroups[1].activeToggles;
+           
             
             // update categories UI
-            updateCategoryUI(activeCategories);            
+            updateCategoryUI(activeCategories, activeToggles);            
 
             // if no filters are set
             toggleResultsHeader(mixer);
@@ -51,7 +51,7 @@ toggleResultsHeader(mixer)
 
 // updates category dropdown toggle
 // sets the count and adds/removes active state
-function updateCategoryUI(categories) {
+function updateUI(categories, toggles) {
     // if there are no active categories
     if (categories == 0) {
         if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
