@@ -28,18 +28,14 @@ let mixer = mixitup(container, {
             // update total # of results in header
             $("#filter-matches").text(mixer.state.totalMatching);
             
-            let activeCategories = mixer.filterGroups[0].activeToggles;
-            console.log("active categories:" + activeCategories);
-            
+            // track mixer state
+            let activeCategories = mixer.filterGroups[0].activeToggles.length;
             let activeToggles    = mixer.filterGroups[1].activeToggles;
-            console.log("active toggles:" + activeToggles);
-            
+
             // update categories UI
             updateCategoryUI(activeCategories, activeToggles);            
-
             // if no filters are set
             toggleResultsHeader(mixer);
-            
             // if no results are found
             toggleEmptyState(mixer);
         }
@@ -50,12 +46,11 @@ let mixer = mixitup(container, {
 toggleResultsHeader(mixer);
 
 
-
 // updates category dropdown toggle
 // sets the count and adds/removes active state
-function updateCategoryUI(categories) {
+function updateCategoryUI(categories, toggles) {
     // if there are no active categories
-    if (categories == 0 && activeToggles != ".featured") {
+    if (categories == 0 && toggles != ".featured") {
         if ($("#categories-toggle").hasClass("dropdown__toggle--active")) {
             // set the new state
             $("#categories-toggle").toggleClass("dropdown__toggle--active");
@@ -96,6 +91,3 @@ function toggleEmptyState(mixer) {
         $("#offers-empty-state").hide()
     }
 }
-
-
-console.log(mixer)
