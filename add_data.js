@@ -28,10 +28,10 @@ $(offers).each(function(){
   
   // if feature has w-condition-invisible class we know it's not featured
   if ( !($(featured).hasClass("w-condition-invisible")) ) {
-  	featured = featured.childNodes[0].data;
+    featured = featured.childNodes[0].data;
     featured = featured.split('&').join('').replace(/\s+/g, '-').toLowerCase();
     // add state data as class
-  	$(this).addClass(featured);
+    $(this).addClass(featured);
   }
 });
 
